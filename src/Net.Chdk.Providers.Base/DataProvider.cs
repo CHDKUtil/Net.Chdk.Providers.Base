@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using Net.Chdk.Json;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Net.Chdk.Providers
 {
@@ -20,34 +21,40 @@ namespace Net.Chdk.Providers
         {
             Logger = logger;
 
-            data = new Lazy<TData>(GetData);
+            _serializer = new Lazy<JsonSerializer>(GetSerializer);
+            _data = new Lazy<TData>(GetData);
         }
 
         #endregion
 
         #region Serializer
 
-        private static readonly Lazy<JsonSerializer> serializer = new Lazy<JsonSerializer>(GetSerializer);
+        private readonly Lazy<JsonSerializer> _serializer;
 
-        private static JsonSerializer Serializer => serializer.Value;
+        private JsonSerializer Serializer => _serializer.Value;
 
-        private static JsonSerializer GetSerializer()
+        private JsonSerializer GetSerializer()
         {
             return JsonSerializer.CreateDefault(Settings);
         }
 
-        private static JsonSerializerSettings Settings => new JsonSerializerSettings
+        private JsonSerializerSettings Settings => new JsonSerializerSettings
         {
-            Converters = new[] { new HexStringJsonConverter() }
+            Converters = GetConverters().ToArray()
         };
+
+        protected virtual IEnumerable<JsonConverter> GetConverters()
+        {
+            yield break;
+        }
 
         #endregion
 
         #region Data
 
-        private readonly Lazy<TData> data;
+        private readonly Lazy<TData> _data;
 
-        protected TData Data => data.Value;
+        protected TData Data => _data.Value;
 
         private TData GetData()
         {

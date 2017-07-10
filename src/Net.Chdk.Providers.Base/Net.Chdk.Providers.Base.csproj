@@ -84,12 +84,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Net.Chdk.Json\src\Net.Chdk.Json\Net.Chdk.Json.csproj">
-      <Project>{BC3C0D74-5A68-4791-BE4B-8B2BC724C0EC}</Project>
-      <Name>Net.Chdk.Json</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="..\..\..\Net.Chdk.Core\src\Net.Chdk.Shared\Net.Chdk.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
