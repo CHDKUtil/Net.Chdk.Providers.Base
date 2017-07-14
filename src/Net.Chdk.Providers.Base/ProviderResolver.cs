@@ -28,6 +28,8 @@ namespace Net.Chdk.Providers
 
         protected TProvider GetProvider(string name)
         {
+            if (name == null)
+                return null;
             Providers.TryGetValue(name, out TProvider provider);
             return provider;
         }
