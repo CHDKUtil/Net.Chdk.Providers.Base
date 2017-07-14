@@ -6,6 +6,7 @@ using System.Linq;
 namespace Net.Chdk.Providers
 {
     public abstract class ProviderResolver<TProvider>
+        where TProvider : class
     {
         #region Fields
 
