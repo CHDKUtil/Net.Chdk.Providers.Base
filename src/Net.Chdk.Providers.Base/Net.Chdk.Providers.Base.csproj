@@ -3,21 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
     <Description>CHIMP base providers</Description>
-    <AssemblyName>Net.Chdk.Providers.Base</AssemblyName>
     <RootNamespace>Net.Chdk.Providers.Base</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>0.2.0</Version>
+    <Version>0.2.1</Version>
+    <VersionSuffix>alpha</VersionSuffix>
     <Product>CHIMP</Product>
+    <Authors>Dmitry Shechtman</Authors>
     <Copyright>Copyright © 2017 Dmitry Shechtman</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Net.Chdk.Providers.Base</Title>
-    <PackageVersion>$(Version)-alpha</PackageVersion>
-    <Authors>Dmitry Shechtman</Authors>
+    <PackageVersion>$(Version)-$(VersionSuffix)</PackageVersion>
     <PackageIconUrl>https://raw.githubusercontent.com/CHDKUtil/CHIMP/master/tiny.png</PackageIconUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/CHDKUtil/Net.Chdk.Providers.Base/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/CHDKUtil/Net.Chdk.Providers.Base</PackageProjectUrl>
@@ -25,21 +25,14 @@
     <PackageTags>chimp provider base</PackageTags>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <TreatSpecificWarningsAsErrors />
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="microsoft.extensions.logging.abstractions" Version="1.1.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2">
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
 </Project>
